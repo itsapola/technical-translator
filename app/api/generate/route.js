@@ -15,7 +15,7 @@ Given a technical product/feature description and a list of buyer audiences, do 
 
 Do not invent capabilities the product description didn't state. If a buyer's likely concern isn't addressable by what was given, say so honestly in watchOutFor rather than inventing a feature.
 
-Respond with ONLY valid JSON in this exact shape, no markdown fences, no preamble:
+Respond with ONLY valid, parseable JSON in this exact shape — no markdown fences, no preamble, no text before or after the JSON object. If you quote or paraphrase language from the product description inside a headline, copy, anchor, or watchOutFor field, do not use raw double quotes around it — use single quotes or drop the quotation marks entirely, and escape any double quote character you do use as \\". The entire response must be a single valid JSON object parseable by JSON.parse with no modification:
 {"coreFact": "...", "translations": [{"audience": "...", "headline": "...", "copy": "...", "anchor": "...", "watchOutFor": "..."}]}`;
 
 export async function POST(req) {
@@ -66,7 +66,7 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         model: "claude-sonnet-5",
-        max_tokens: 2000,
+        max_tokens: 2800,
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: userMessage }],
       }),
@@ -90,10 +90,28 @@ export async function POST(req) {
     try {
       parsed = JSON.parse(cleaned);
     } catch {
-      return NextResponse.json(
-        { error: "Model response wasn't valid JSON. Try again." },
-        { status: 502 }
-      );
+      // Fallback: the model may have added stray text before/after the JSON
+      // object. Extract the substring from the first { to the last } and
+      // retry once before giving up.
+      const start = cleaned.indexOf("{");
+      const end = cleaned.lastIndexOf("}");
+      if (start !== -1 && end !== -1 && end > start) {
+        try {
+          parsed = JSON.parse(cleaned.slice(start, end + 1));
+        } catch {
+          console.error("JSON parse failed twice. Raw model output:", raw);
+          return NextResponse.json(
+            { error: "Model response wasn't valid JSON. Try again." },
+            { status: 502 }
+          );
+        }
+      } else {
+        console.error("No JSON object found. Raw model output:", raw);
+        return NextResponse.json(
+          { error: "Model response wasn't valid JSON. Try again." },
+          { status: 502 }
+        );
+      }
     }
 
     if (!parsed.translations || !Array.isArray(parsed.translations)) {

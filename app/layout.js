@@ -4,6 +4,15 @@ export const metadata = {
   title: "Technical-to-Buyer Translator | Ashley Pola",
   description:
     "Hold one technical fact constant, translate it into value-prop copy for different buyers — without losing what's actually true.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Technical-to-Buyer Translator",
     description:

@@ -64,8 +64,8 @@ export default function Home() {
           <p className="lede">
             Describe what the product technically does, list the buyers who
             need to understand it, and it holds one core technical fact
-            constant while translating it into value-prop copy for each —
-            so the CFO and the engineer are hearing the same truth, in
+            constant while translating it into value-prop copy for each.
+            So, the CFO and the engineer are hearing the same truth, in
             language each of them actually cares about.
           </p>
         </section>
@@ -110,7 +110,7 @@ export default function Home() {
               onChange={(e) => setProduct(e.target.value)}
             />
             <div className="hint">
-              Be precise — the more specific the technical claim, the less
+              Be precise : the more specific the technical claim, the less
               it can drift when translated.
             </div>
           </div>

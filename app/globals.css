@@ -1,21 +1,21 @@
 :root {
-  --paper: #f3efe4;
-  --paper-deep: #d8d5ce;
-  --ink: #171817;
-  --graphite: #5c5d58;
-  --muted: #5c5d58;
-  --petrol: #163f43;
+  --paper: #F7F9FC;
+  --paper-deep: #E6EDF4;
+  --ink: #0E2240;
+  --graphite: #33435A;
+  --muted: #33435A;
+  --petrol: #0E2240;
   --ion: #73a9ff;
   --celery: #dce8b0;
-  --persimmon: #ff6a4d;
-  --persimmon-tx: #c93f22;
+  --persimmon: #C8322B;
+  --persimmon-tx: #A8281F;
   --butter: #dce8b0;
   --grotesk: "Neue Montreal", sans-serif;
   --serif: "Switzer", sans-serif;
   --body: "Switzer", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
-  --hair: #c9c5ba;
-  --hair-soft: #ded9cd;
+  --hair: #0E2240;
+  --hair-soft: #0E2240;
   --e: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -55,7 +55,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 22px clamp(20px, 5vw, 48px);
-  border-bottom: 0.5px solid var(--hair-soft);
+  border-bottom: 2px solid var(--hair-soft);
 }
 .brand {
   font-family: var(--grotesk);
@@ -143,13 +143,13 @@ nav {
 .process {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--hair);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--hair);
   margin: clamp(36px, 6vh, 56px) 0;
 }
 .pstep {
   padding: 24px 24px 24px 0;
-  border-right: 1px solid var(--hair);
+  border-right: 2px solid var(--hair);
 }
 .pstep:not(:first-child) {
   padding-left: 24px;
@@ -183,7 +183,7 @@ nav {
   }
   .pstep {
     border-right: none;
-    border-bottom: 1px solid var(--hair);
+    border-bottom: 2px solid var(--hair);
     padding: 20px 0;
   }
 }
@@ -191,7 +191,7 @@ nav {
 /* form */
 .formcard {
   background: var(--paper-deep);
-  border: 1px solid var(--hair);
+  border: 2px solid var(--hair);
   border-radius: 2px;
   padding: clamp(24px, 4vw, 40px);
   margin-bottom: clamp(40px, 7vh, 64px);
@@ -215,7 +215,7 @@ nav {
 .field input {
   width: 100%;
   background: var(--paper);
-  border: 1px solid var(--hair);
+  border: 2px solid var(--hair);
   border-radius: 2px;
   padding: 14px 16px;
   font-family: var(--body);
@@ -252,7 +252,7 @@ nav {
   text-transform: uppercase;
   background: var(--persimmon);
   color: var(--paper);
-  border: 1px solid var(--persimmon);
+  border: 2px solid var(--persimmon);
   border-radius: 2px;
   padding: 15px 30px;
   cursor: pointer;
@@ -280,7 +280,7 @@ nav {
 
 /* core fact anchor */
 .corefact {
-  border: 1px dashed var(--hair);
+  border: 2px dashed var(--hair);
   border-radius: 2px;
   padding: 18px 22px;
   margin-top: clamp(28px, 4vh, 40px);
@@ -323,7 +323,7 @@ nav {
 }
 
 .translation {
-  border: 1px solid var(--hair);
+  border: 2px solid var(--hair);
   border-radius: 2px;
   padding: clamp(24px, 4vw, 36px);
   margin-bottom: 22px;
@@ -357,12 +357,12 @@ nav {
 .translation .copy {
   font-size: 17px;
   line-height: 1.6;
-  color: #2f2b24;
+  color: #1E2B3F;
   max-width: 62ch;
   margin-bottom: 20px;
 }
 .deflist {
-  border-top: 1px solid var(--hair);
+  border-top: 2px solid var(--hair);
   margin-top: 18px;
 }
 .dfrow {
@@ -370,7 +370,7 @@ nav {
   grid-template-columns: 160px 1fr;
   gap: 20px;
   padding: 16px 0;
-  border-bottom: 1px solid var(--hair);
+  border-bottom: 2px solid var(--hair);
 }
 .dfrow .dt {
   font-family: var(--mono);
@@ -383,7 +383,7 @@ nav {
 .dfrow .dd {
   font-size: 15.5px;
   line-height: 1.55;
-  color: #2f2b24;
+  color: #1E2B3F;
 }
 @media (max-width: 640px) {
   .dfrow {
@@ -393,7 +393,7 @@ nav {
 }
 
 footer {
-  border-top: 0.5px solid var(--hair);
+  border-top: 2px solid var(--hair);
   padding: 26px clamp(20px, 5vw, 48px);
   display: flex;
   justify-content: space-between;
@@ -480,3 +480,36 @@ footer a {
     transition: none !important;
   }
 }
+
+
+/* ---- Mission Control theme (matches ashleypola.com) ---- */
+:root { --navy: #0E2240; --grid: #DCE8F3; --grid-major: #BCD3EA; }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
+nav { background: rgba(247, 249, 252, 0.9); }
+.navmark { width: 34px !important; height: 34px !important; }
+.brand a { gap: 12px !important; }
+.eyebrow { color: var(--navy) !important; }
+.eyebrow::before { background: var(--persimmon) !important; }
+/* cards and fields sit on white */
+.formcard, .extract, .actionitem, .field input, .field textarea, .field select,
+input[type="text"], input[type="url"], textarea, select { background: #fff !important; }
+.field input, .field textarea, .field select { border-color: var(--navy) !important; }
+.btn:hover:not(:disabled) { background: var(--navy) !important; border-color: var(--navy) !important; }
+/* score bars need a light track now that hairlines are navy */
+.sbar-track { background: #DCE6F0 !important; }
+/* no decorative rule after section kickers (matches the site) */
+.kicker .ln { display: none !important; }
+/* legibility floor for small mono labels */
+.navback, .eyebrow, .field label, .field .hint, .pstep .pn, .status, .extract .sl,
+.kicker, footer, .scorerow .snum { font-size: 12px !important; }
+
+/* keep footer text clear of the spinning orbit mark */
+footer { padding-right: calc(clamp(20px, 5vw, 48px) + 40px); }
